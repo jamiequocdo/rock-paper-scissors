@@ -35,32 +35,70 @@
                 But returns "You forgot to choose" if Rock, Paper, or Scissors is not written*/
         
             /*THE COMPUTER WILL RANDOMLY CHOOSE ROCK, PAPER, OR SCISSORS*/
-            /*the computer will say rock, paper, scissors on the console*/
+
             function getComputerChoice() {
                 const computerChoice = Math.floor(Math.random() * 3) /*computerChoice will be 0, 1, or 2*/
 
                 if (computerChoice === 0) {
-                    return "Rock"
+                    return "rock"
                 } else if (computerChoice === 1) {
-                    return "Paper"
+                    return "paper"
                 } else {
-                    return "Scissors"
+                    return "scissors"
                 }
             }
 
-            console.log(getComputerChoice());
+            const computerSelection = getComputerChoice();
+            let playerSelection = prompt("Will you choose rock, paper, or scissors?", "").toLowerCase();
+
+            /*Create a function that plays one Round of Rock, Paper, Scissors*/
+            function playRound (playerSelection, computerSelection) {
+                
+            /*/*If User chooses Rock and Computer chooses Paper = computer wins*/
+                if (playerSelection === "rock" && computerSelection === "paper") {
+                    return alert("Computer Wins, Paper beats Rock");
+                /* If User chooses Rock and Computer chooses Scissors = User wins */
+                } else if (playerSelection === "rock" && computerSelection === "scissors") {
+                    return alert("Player Wins, Rock beats Scissors");
+                /*If user chooses Rock and Computer chooses Rock = tie*/
+                } else if (playerSelection === "rock" && computerSelection === "rock") {
+                    return alert("Tie Game, both chose rock");
+                /*If user chooses Paper and Computer chooses Scissors = computer wins*/
+                } else if (playerSelection === "paper" && computerSelection === "scissors") {
+                    return alert("Computer Wins, Scissors beats Paper");
+                /*If user chooses Paper and Computer chooses Rock = user wins*/
+                } else if (playerSelection === "paper" && computerSelection === "rock") {
+                    return alert("Player Wins, Paper beats Rock");
+                /*If user chooses paper and computer chooses Paper = tie*/
+                } else if (playerSelection === "paper" && computerSelection === "paper") {
+                    return alert("Tie Game, both chose Paper");
+                /*If user chooses Scissors and Computer chooses Rock = Computer wins*/
+                } else if (playerSelection === "scissors" && computerSelection === "rock") {
+                    return alert("Computer Wins, Rock beats Scissors");
+                /*If user chooses Scissors and Computer chooses Paper = User wins*/
+                } else if (playerSelection === "scissors" && computerSelection === "paper") {
+                    return alert("Player Wins, Scissors beats Paper");
+                /*if user chooses Scissors and Computer chooses Scissors = tie*/
+                } else if (playerSelection === "scissors" && computerSelection === "scissors") {
+                    return alert("Tie Game, Both are Scissors");
+                } else {
+                    return alert("Incorrect input");
+                }
+            }
+
+            console.log(playerSelection)
+            console.log(computerSelection)
+
+            console.log(playRound(playerSelection, computerSelection));
             
             
-            /*If User chooses Rock and Computer chooses Paper = computer wins
-            If User chooses Rock and Computer chooses Scissors = User wins
-            If user chooses Rock and Computer chooses Rock = tie
-            If user chooses Paper and Computer chooses Scissors = computer wins
-            If user chooses Paper and Computer chooses Rock = user wins
-            If user chooses paper and computer chooses Paper = tie
-            If user chooses Scissors and Computer chooses Rock = Computer wins
-            If user chooses Scissors and Computer chooses Paper = User wins
-            if user chooses Scissors and Computer chooses Scissors = tie
-            A message will display which choices were chosen by whom and displays who won*/
+            
+            
+            
+            
+
+            
+            /*A message will display which choices were chosen by whom and displays who won*/
             
 
             
