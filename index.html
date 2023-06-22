@@ -15,37 +15,56 @@
 
     <body>
         <script>
-            /*Understand The Problem:
-                This script will allow a user to play Rock, Paper, Scissors against
-                the computer.  The user will choose one of the above whilst the computer
-                will randomly choose as well.  When the player has chosen Rock, Paper, or 
-                Scissors, the user will press "GO!" to indicate that they are done
-                choosing and is ready to play.  Both the user's choice and computer's
-                choice will be revealed at the same time and the winner will be determined. */
+        /*Understand The Problem:
+            This script will allow a user to play Rock, Paper, Scissors against
+            the computer.  The user will choose one of the above whilst the computer
+            will randomly choose as well.  When the player has chosen Rock, Paper, or 
+            Scissors, the user will press "GO!" to indicate that they are done
+            choosing and is ready to play.  Both the user's choice and computer's
+            choice will be revealed at the same time and the winner will be determined. */
 
-            /*Plan:
-                User Interface: Using console in Chrome Devtools
-                Input Data: User will input choice into a textbox
-                Desired Output: User input data vs. Computer input data = win/lose for user
-                Output Y = User input vs. Computer input */
+        /*Plan:
+            User Interface: Using console in Chrome Devtools
+            Input Data: User will input choice into a textbox
+            Desired Output: User input data vs. Computer input data = win/lose for user
+            Output Y = User input vs. Computer input */
+        
+        /*Pseudocode
+            User inputs a choice into a textbox: Rock, Paper, or Scissors
+            User clicks on a button that says "Play" to start game.  
+                But returns "You forgot to choose" if Rock, Paper, or Scissors is not written*/
+        
+            /*THE COMPUTER WILL RANDOMLY CHOOSE ROCK, PAPER, OR SCISSORS*/
+            /*the computer will say rock, paper, scissors on the console*/
+            function getComputerChoice() {
+                const computerChoice = Math.floor(Math.random() * 3) /*computerChoice will be 0, 1, or 2*/
+
+                if (computerChoice === 0) {
+                    return "Rock"
+                } else if (computerChoice === 1) {
+                    return "Paper"
+                } else {
+                    return "Scissors"
+                }
+            }
+
+            console.log(getComputerChoice());
             
-            /*Pseudocode
-                User inputs a choice into a textbox: Rock, Paper, or Scissors
-                User clicks on a button that says "Play" to start game.  But returns "You forgot to choose" if Rock, Paper, or Scissors is not written
-                If User chooses Rock and Computer chooses Paper = computer wins
-                If User chooses Rock and Computer chooses Scissors = User wins
-                If user chooses Rock and Computer chooses Rock = tie
-                If user chooses Paper and Computer chooses Scissors = computer wins
-                If user chooses Paper and Computer chooses Rock = user wins
-                If user chooses paper and computer chooses Paper = tie
-                If user chooses Scissors and Computer chooses Rock = Computer wins
-                If user chooses Scissors and Computer chooses Paper = User wins
-                if user chooses Scissors and Computer chooses Scissors = tie
-                A message will display which choices were chosen by whom and displays who won*/
-            function getComputerChoice () {}
+            
+            /*If User chooses Rock and Computer chooses Paper = computer wins
+            If User chooses Rock and Computer chooses Scissors = User wins
+            If user chooses Rock and Computer chooses Rock = tie
+            If user chooses Paper and Computer chooses Scissors = computer wins
+            If user chooses Paper and Computer chooses Rock = user wins
+            If user chooses paper and computer chooses Paper = tie
+            If user chooses Scissors and Computer chooses Rock = Computer wins
+            If user chooses Scissors and Computer chooses Paper = User wins
+            if user chooses Scissors and Computer chooses Scissors = tie
+            A message will display which choices were chosen by whom and displays who won*/
+            
 
             
-            
+
         </script>
 
 
