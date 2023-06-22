@@ -49,10 +49,13 @@
             }
 
             const computerSelection = getComputerChoice();
-            let playerSelection = prompt("Will you choose rock, paper, or scissors?", "").toLowerCase();
+            let playerSelection = ""
+
+            
 
             /*Create a function that plays one Round of Rock, Paper, Scissors*/
             function playRound (playerSelection, computerSelection) {
+                playerSelection = prompt("Will you choose rock, paper, or scissors?", "").toLowerCase();
                 
             /*/*If User chooses Rock and Computer chooses Paper = computer wins*/
                 if (playerSelection === "rock" && computerSelection === "paper") {
@@ -86,10 +89,15 @@
                 }
             }
 
-            console.log(playerSelection)
-            console.log(computerSelection)
+            function game() {
+                console.log(playRound(playerSelection, computerSelection), alert("Game 1"))
+                console.log(playRound(playerSelection, computerSelection))
+                console.log(playRound(playerSelection, computerSelection))
+                console.log(playRound(playerSelection, computerSelection))
+                console.log(playRound(playerSelection, computerSelection))
+            }
 
-            console.log(playRound(playerSelection, computerSelection));
+            game();
             
             
             
