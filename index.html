@@ -57,40 +57,28 @@
             function playRound (playerSelection, computerSelection) {
                 playerSelection = prompt("Will you choose rock, paper, or scissors?", "").toLowerCase();
                 
-            /*/*If User chooses Rock and Computer chooses Paper = computer wins*/
-                if (playerSelection === "rock" && computerSelection === "paper") {
-                    return alert("Computer Wins, Paper beats Rock");
-                /* If User chooses Rock and Computer chooses Scissors = User wins */
-                } else if (playerSelection === "rock" && computerSelection === "scissors") {
-                    return alert("Player Wins, Rock beats Scissors");
-                /*If user chooses Rock and Computer chooses Rock = tie*/
-                } else if (playerSelection === "rock" && computerSelection === "rock") {
-                    return alert("Tie Game, both chose rock");
-                /*If user chooses Paper and Computer chooses Scissors = computer wins*/
-                } else if (playerSelection === "paper" && computerSelection === "scissors") {
-                    return alert("Computer Wins, Scissors beats Paper");
-                /*If user chooses Paper and Computer chooses Rock = user wins*/
-                } else if (playerSelection === "paper" && computerSelection === "rock") {
-                    return alert("Player Wins, Paper beats Rock");
-                /*If user chooses paper and computer chooses Paper = tie*/
-                } else if (playerSelection === "paper" && computerSelection === "paper") {
-                    return alert("Tie Game, both chose Paper");
-                /*If user chooses Scissors and Computer chooses Rock = Computer wins*/
-                } else if (playerSelection === "scissors" && computerSelection === "rock") {
-                    return alert("Computer Wins, Rock beats Scissors");
-                /*If user chooses Scissors and Computer chooses Paper = User wins*/
-                } else if (playerSelection === "scissors" && computerSelection === "paper") {
-                    return alert("Player Wins, Scissors beats Paper");
-                /*if user chooses Scissors and Computer chooses Scissors = tie*/
-                } else if (playerSelection === "scissors" && computerSelection === "scissors") {
-                    return alert("Tie Game, Both are Scissors");
+                /*Computer Wins*/
+                if ((playerSelection === "rock" && computerSelection === "paper") ||
+                    (playerSelection === "paper" && computerSelection === "scissors") ||
+                    (playerSelection === "scissors" && computerSelection === "rock")) {
+                        return alert(`Computer Wins, ${computerSelection} beats ${playerSelection}`);
+                /*Player Wins*/
+                } else if ( (playerSelection === "paper" && computerSelection === "rock") ||
+                            (playerSelection === "scissors" && computerSelection === "paper") ||
+                            (playerSelection === "rock" && computerSelection === "scissors")) {
+                                return alert(`Player Wins, ${playerSelection} beats ${computerSelection}`);
+                /*Tie Game*/
+                } else if ( (playerSelection === "rock" && computerSelection === "rock") ||
+                            (playerSelection === "paper" && computerSelection === "paper") ||
+                            (playerSelection === "scissors" && computerSelection === "scissors")) {
+                                return alert(`Tie Game, both chose ${playerSelection}`);
                 } else {
                     return alert("Incorrect input");
                 }
             }
 
             function game() {
-                console.log(playRound(playerSelection, computerSelection), alert("Game 1"))
+                console.log(playRound(playerSelection, computerSelection))
                 console.log(playRound(playerSelection, computerSelection))
                 console.log(playRound(playerSelection, computerSelection))
                 console.log(playRound(playerSelection, computerSelection))
