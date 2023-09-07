@@ -14,92 +14,12 @@
     </head>
 
     <body>
-        <script>
-        /*Understand The Problem:
-            This script will allow a user to play Rock, Paper, Scissors against
-            the computer.  The user will choose one of the above whilst the computer
-            will randomly choose as well.  When the player has chosen Rock, Paper, or 
-            Scissors, the user will press "GO!" to indicate that they are done
-            choosing and is ready to play.  Both the user's choice and computer's
-            choice will be revealed at the same time and the winner will be determined. */
+        <script src="script.js"></script>
 
-        /*Plan:
-            User Interface: Using console in Chrome Devtools
-            Input Data: User will input choice into a textbox
-            Desired Output: User input data vs. Computer input data = win/lose for user
-            Output Y = User input vs. Computer input */
+        <button id="rock">Rock</button>
+        <button id="paper">Paper</button>
+        <button id="scissors">Scissors</button>
         
-        /*Pseudocode
-            User inputs a choice into a textbox: Rock, Paper, or Scissors
-            User clicks on a button that says "Play" to start game.  
-                But returns "You forgot to choose" if Rock, Paper, or Scissors is not written*/
-        
-            /*THE COMPUTER WILL RANDOMLY CHOOSE ROCK, PAPER, OR SCISSORS*/
-
-            function getComputerChoice() {
-                const computerChoice = Math.floor(Math.random() * 3) /*computerChoice will be 0, 1, or 2*/
-
-                if (computerChoice === 0) {
-                    return "rock"
-                } else if (computerChoice === 1) {
-                    return "paper"
-                } else {
-                    return "scissors"
-                }
-            }
-
-            const computerSelection = getComputerChoice();
-            let playerSelection = "";
-            let computerScore = 0;
-            let playerScore = 0;
-
-            
-
-            /*Create a function that plays one Round of Rock, Paper, Scissors*/
-            function playRound (playerSelection, computerSelection) {
-                playerSelection = prompt("Will you choose rock, paper, or scissors?", "").toLowerCase();
-                
-                /*Computer Wins*/
-                if ((playerSelection === "rock" && computerSelection === "paper") ||
-                    (playerSelection === "paper" && computerSelection === "scissors") ||
-                    (playerSelection === "scissors" && computerSelection === "rock")) {
-                        alert(`Computer Wins, ${computerSelection} beats ${playerSelection}`);
-                        computerScore++;
-                        alert(`Player score is ${playerScore}. Computer score is ${computerScore}.`)
-                /*Player Wins*/
-                } else if ( (playerSelection === "paper" && computerSelection === "rock") ||
-                            (playerSelection === "scissors" && computerSelection === "paper") ||
-                            (playerSelection === "rock" && computerSelection === "scissors")) {
-                                alert(`Player Wins, ${playerSelection} beats ${computerSelection}`);
-                                playerScore++;
-                                alert(`Player score is ${playerScore}. Computer score is ${computerScore}.`)
-                /*Tie Game*/
-                } else if ( (playerSelection === "rock" && computerSelection === "rock") ||
-                            (playerSelection === "paper" && computerSelection === "paper") ||
-                            (playerSelection === "scissors" && computerSelection === "scissors")) {
-                                alert(`Tie Game, both chose ${playerSelection}`);
-                                alert(`Player score is ${playerScore}. Computer score is ${computerScore}.`)
-                } else {
-                    alert("Incorrect input");
-                }
-            }
-
-            playRound(playerSelection, computerSelection);
-            
-            
-            
-            
-            
-            
-
-            
-            /*A message will display which choices were chosen by whom and displays who won*/
-            
-
-            
-
-        </script>
-
 
     </body>
 </html>
