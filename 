@@ -1,0 +1,35 @@
+[33mcommit d924f25089af174665ae8a2a979563eb6b806f9b[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Jamie <jamiedofitness@gmail.com>
+Date:   Thu Jun 22 11:34:32 2023 -0700
+
+    Create function game() to run playRound() function 5 times.
+
+[33mcommit 39d237dc9834812f42b55b9f39b9ef2f2d1834c3[m
+Author: Jamie <jamiedofitness@gmail.com>
+Date:   Thu Jun 22 11:23:55 2023 -0700
+
+    Add alert() to all the return values inside the playRound() function
+
+[33mcommit 4dee9676bff721b367470bd78f6f1fbf11609807[m
+Author: Jamie <jamiedofitness@gmail.com>
+Date:   Wed Jun 21 22:20:49 2023 -0700
+
+    Create computer function for it to randomly select rock, paper, or scissors
+
+[33mcommit 286c8c20535dc590a33a644e135f9df7c9a1d88e[m
+Author: jamiequocdo <79014033+jamiequocdo@users.noreply.github.com>
+Date:   Wed Jun 21 10:05:35 2023 -0700
+
+    Write a plan and pseudocode for the program
+
+[33mcommit d1db8ea5ee974b6efc966e05c141aa896176494b[m
+Author: Jamie <jamiedofitness@gmail.com>
+Date:   Tue Jun 20 21:10:39 2023 -0700
+
+    Create an html boilerplate
+
+[33mcommit bdc155360d520d4fc11fa7975864a10880e6dbdf[m
+Author: Jamie Do <79014033+jamiequocdo@users.noreply.github.com>
+Date:   Tue Jun 20 20:58:14 2023 -0700
+
+    Initial commit

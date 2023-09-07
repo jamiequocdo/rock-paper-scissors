@@ -1,5 +1,3 @@
-
-
 function getComputerChoice() {
     const computerChoice = Math.floor(Math.random() * 3) /*computerChoice will be 0, 1, or 2*/
 
