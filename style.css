@@ -27,4 +27,5 @@ body {
 #paper,
 #scissors {
     width: 75px;
+    border-radius: 10px;
 }
