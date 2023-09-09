@@ -36,6 +36,13 @@ scissors.addEventListener("click", () => {
     computerSelection = getComputerChoice();
     playRound(playerSelection, computerSelection);
 })
+
+const playerChoice = document.getElementById("player")
+const computerChoice = document.getElementById("computer");
+
+console.log(playerChoice)
+playerChoice.textContent = "Hello Worlds"
+computerChoice.textContent = "Goodbye Worlds"
 //Get playerSelection to populate with a string according to the button the player presses
     //The player clicks on rock, paper, or scissors
         //if the player clicks on rock, it will populate the playerSelection as "rock"

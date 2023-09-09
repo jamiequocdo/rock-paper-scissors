@@ -11,7 +11,34 @@ body {
     height: 100%;
     margin: 0;
     padding: 0;
+    flex-direction: column;
 }
+
+#choice {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.choices {
+    height: 250px;
+    width: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#player {
+    background-color: blue
+}
+
+#computer {
+    background-color: red;
+
+}
+
+
 
 #buttonGroup {
     display: flex;
