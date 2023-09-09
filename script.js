@@ -39,10 +39,13 @@ scissors.addEventListener("click", () => {
 
 const playerChoice = document.getElementById("player")
 const computerChoice = document.getElementById("computer");
+const winner = document.getElementById("winner");
+const score = document.getElementById("score");
 
 console.log(playerChoice)
 playerChoice.textContent = "Hello Worlds"
 computerChoice.textContent = "Goodbye Worlds"
+winner.textContent = "Winner";
 //Get playerSelection to populate with a string according to the button the player presses
     //The player clicks on rock, paper, or scissors
         //if the player clicks on rock, it will populate the playerSelection as "rock"
@@ -64,21 +67,27 @@ function playRound (playerSelection, computerSelection) {
     if ((playerSelection === "rock" && computerSelection === "paper") ||
         (playerSelection === "paper" && computerSelection === "scissors") ||
         (playerSelection === "scissors" && computerSelection === "rock")) {
-            console.log(`Computer Wins, ${computerSelection} beats ${playerSelection}`);
+            playerChoice.textContent = `${playerSelection.toUpperCase()}`;
+            computerChoice.textContent = `${computerSelection.toUpperCase()}`;
+            winner.textContent = "Computer Wins Round";
             computerScore++;
-            console.log(`Player score is ${playerScore}. Computer score is ${computerScore}.`)
+            score.textContent = `Player score is ${playerScore}. Computer score is ${computerScore}.`
     /*Player Wins*/
     } else if ( (playerSelection === "paper" && computerSelection === "rock") ||
             (playerSelection === "scissors" && computerSelection === "paper") ||
             (playerSelection === "rock" && computerSelection === "scissors")) {
-                console.log(`Player Wins, ${playerSelection} beats ${computerSelection}`);
+                playerChoice.textContent = `${playerSelection.toUpperCase()}`;
+                computerChoice.textContent = `${computerSelection.toUpperCase()}`;
+                winner.textContent = "Player Wins Round";
                 playerScore++;
-                console.log(`Player score is ${playerScore}. Computer score is ${computerScore}.`)
+                score.textContent = `Player score is ${playerScore}. Computer score is ${computerScore}.`
     /*Tie Game*/
     } else if ( (playerSelection === "rock" && computerSelection === "rock") ||
                 (playerSelection === "paper" && computerSelection === "paper") ||
                 (playerSelection === "scissors" && computerSelection === "scissors")) {
-                    console.log(`Tie Game, both chose ${playerSelection}`);
-                    console.log(`Player score is ${playerScore}. Computer score is ${computerScore}.`)
+                    playerChoice.textContent = `${playerSelection.toUpperCase()}`;
+                    computerChoice.textContent = `${computerSelection.toUpperCase()}`;
+                    winner.textContent = `Tie Game, both chose ${playerSelection}`;
+                    score.textContent = `Player score is ${playerScore}. Computer score is ${computerScore}.`
     } 
 }
