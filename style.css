@@ -46,13 +46,14 @@ body {
     align-items: center;
     gap: 15px;
     justify-content: center;
-    height: 300px;
+    height: 75px;
 
 }
 
 #rock,
 #paper,
-#scissors {
+#scissors,
+#restart {
     width: 75px;
     border-radius: 10px;
 }
