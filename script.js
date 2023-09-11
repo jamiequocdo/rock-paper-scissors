@@ -21,6 +21,7 @@ playerChoose.forEach(item => {
     element.addEventListener("click", ()=> {
         playerSelection = item
         computerSelection = getComputerChoice();
+        playRound(playerSelection, computerSelection)
     })
     
 })
