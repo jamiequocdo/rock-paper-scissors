@@ -14,28 +14,17 @@ let computerSelection = getComputerChoice();
 let playerSelection = "";
 let computerScore = 0;
 let playerScore = 0;
+let playerChoose = ["rock", "paper", "scissors"];
 
-const rock = document.getElementById("rock");
-const paper = document.getElementById("paper");
-const scissors = document.getElementById("scissors");
-
-rock.addEventListener("click", () => {
-    playerSelection = "rock";
-    computerSelection = getComputerChoice();
-    playRound(playerSelection, computerSelection);
-});
-
-paper.addEventListener("click", () => {
-    playerSelection = "paper";
-    computerSelection = getComputerChoice();
-    playRound(playerSelection, computerSelection);
+playerChoose.forEach(item => {
+    const element = document.getElementById(item);
+    element.addEventListener("click", ()=> {
+        playerSelection = item
+        computerSelection = getComputerChoice();
+    })
+    
 })
 
-scissors.addEventListener("click", () => {
-    playerSelection = "scissors";
-    computerSelection = getComputerChoice();
-    playRound(playerSelection, computerSelection);
-})
 
 const playerChoice = document.getElementById("player")
 const computerChoice = document.getElementById("computer");
@@ -64,36 +53,44 @@ winner.textContent = "Winner";
 function playRound (playerSelection, computerSelection) {
 
     /*Computer Wins*/
-    if (playerScore === 3) {
-            winner.textContent = "Player Wins The Game!";
-        } else if (computerScore === 3) {
-            winner.textContent = "Computer Wins The Game!"
-        } else {
-            if ((playerSelection === "rock" && computerSelection === "paper") ||
-                (playerSelection === "paper" && computerSelection === "scissors") ||
-                (playerSelection === "scissors" && computerSelection === "rock")) {
+    
+    if ((playerSelection === "rock" && computerSelection === "paper") ||
+        (playerSelection === "paper" && computerSelection === "scissors") ||
+        (playerSelection === "scissors" && computerSelection === "rock")) {
+            playerChoice.textContent = `${playerSelection.toUpperCase()}`;
+            computerChoice.textContent = `${computerSelection.toUpperCase()}`;
+            computerScore++;
+            if (computerScore === 3) {
+                winner.textContent = "Computer Wins The Game!";
+                return;
+            } else {
+                winner.textContent = "Computer Wins Round";
+                score.textContent = `Player score is ${playerScore}. Computer score is ${computerScore}.`
+            }
+            
+            
+    /*Player Wins*/
+    } else if ( (playerSelection === "paper" && computerSelection === "rock") ||
+            (playerSelection === "scissors" && computerSelection === "paper") ||
+            (playerSelection === "rock" && computerSelection === "scissors")) {
+                playerChoice.textContent = `${playerSelection.toUpperCase()}`;
+                computerChoice.textContent = `${computerSelection.toUpperCase()}`;
+                playerScore++;
+                if (playerScore === 0) {
+                    winner.textContent = "Player Wins The Game!";
+                } else {
+                    winner.textContent = "Player Wins Round";
+                    score.textContent = `Player score is ${playerScore}. Computer score is ${computerScore}.`
+                }
+                         
+    /*Tie Game*/
+    } else if ( (playerSelection === "rock" && computerSelection === "rock") ||
+                (playerSelection === "paper" && computerSelection === "paper") ||
+                (playerSelection === "scissors" && computerSelection === "scissors")) {
                     playerChoice.textContent = `${playerSelection.toUpperCase()}`;
                     computerChoice.textContent = `${computerSelection.toUpperCase()}`;
-                    winner.textContent = "Computer Wins Round";
-                    computerScore++;
+                    winner.textContent = `Tie Game, both chose ${playerSelection}`;
                     score.textContent = `Player score is ${playerScore}. Computer score is ${computerScore}.`
-            /*Player Wins*/
-            } else if ( (playerSelection === "paper" && computerSelection === "rock") ||
-                    (playerSelection === "scissors" && computerSelection === "paper") ||
-                    (playerSelection === "rock" && computerSelection === "scissors")) {
-                        playerChoice.textContent = `${playerSelection.toUpperCase()}`;
-                        computerChoice.textContent = `${computerSelection.toUpperCase()}`;
-                        winner.textContent = "Player Wins Round";
-                        playerScore++;
-                        score.textContent = `Player score is ${playerScore}. Computer score is ${computerScore}.`
-            /*Tie Game*/
-            } else if ( (playerSelection === "rock" && computerSelection === "rock") ||
-                        (playerSelection === "paper" && computerSelection === "paper") ||
-                        (playerSelection === "scissors" && computerSelection === "scissors")) {
-                            playerChoice.textContent = `${playerSelection.toUpperCase()}`;
-                            computerChoice.textContent = `${computerSelection.toUpperCase()}`;
-                            winner.textContent = `Tie Game, both chose ${playerSelection}`;
-                            score.textContent = `Player score is ${playerScore}. Computer score is ${computerScore}.`
-            }
-        }
+    }
 }
+
