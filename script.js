@@ -1,3 +1,4 @@
+//Obtains the choice of the computer
 function getComputerChoice() {
     const computerChoice = Math.floor(Math.random() * 3) /*computerChoice will be 0, 1, or 2*/
 
@@ -16,24 +17,34 @@ let computerScore = 0;
 let playerScore = 0;
 let playerChoose = ["rock", "paper", "scissors"];
 
-playerChoose.forEach(item => {
-    const element = document.getElementById(item);
+function Game() {
+    playerChoose.forEach(item => {
+        const element = document.getElementById(item);
 
-    function playFullGame() {
-        playerSelection = item;
-        computerSelection = getComputerChoice();
-        if (playerScore === 5) {
-            winner.textContent = "Player Wins The Game!";
-            element.removeEventListener("click", playFullGame);
-        } else if (computerScore === 5) {
-            winner.textContent = "Computer Wins The Game!";
-            element.removeEventListener("click", playFullGame);
-        } else {
-            playRound(playerSelection, computerSelection);
-        }
+        function playFullGame() {
+    playerSelection = item;
+    computerSelection = getComputerChoice();
+    if (playerScore === 5 ||computerScore === 5) {
+        element.removeEventListener("click", playFullGame);
+    } else {
+        playRound(playerSelection, computerSelection);
     }
+}
     element.addEventListener("click", playFullGame);
-    })
+        })
+}
+
+Game()
+
+const restartButton = document.getElementById("restart");
+restartButton.addEventListener("click", () => {
+    playerScore = 0;
+    computerScore = 0;
+    winner.textContent = "Winner"
+    score.textContent = "Score"
+    Game();
+})
+
 
 
 const playerChoice = document.getElementById("player")
@@ -41,23 +52,9 @@ const computerChoice = document.getElementById("computer");
 const winner = document.getElementById("winner");
 const score = document.getElementById("score");
 
-console.log(playerChoice)
-playerChoice.textContent = "Hello Worlds"
-computerChoice.textContent = "Goodbye Worlds"
+playerChoice.textContent = "Player";
+computerChoice.textContent = "Computer";
 winner.textContent = "Winner";
-//Get playerSelection to populate with a string according to the button the player presses
-    //The player clicks on rock, paper, or scissors
-        //if the player clicks on rock, it will populate the playerSelection as "rock"
-            //*An eventListener with "click" needs to be applied to the button
-            //
-
-                //*For the button to have an event listener, it needs to be called with document.getElementById("")
-                //Create variable rock add value of button id="rock"
-                //create variable paper and add value of paper button
-                //create variable of scissors and add value of scissors button
-
-
-
 
 /*Create a function that plays one Round of Rock, Paper, Scissors*/
 function playRound (playerSelection, computerSelection) {
@@ -70,8 +67,12 @@ function playRound (playerSelection, computerSelection) {
             playerChoice.textContent = `${playerSelection.toUpperCase()}`;
             computerChoice.textContent = `${computerSelection.toUpperCase()}`;
             computerScore++;
-            winner.textContent = "Computer Wins Round";
             score.textContent = `Player score is ${playerScore}. Computer score is ${computerScore}.`
+            if (computerScore === 5) {
+                winner.textContent = "Computer Wins The Game!";
+            } else {
+                winner.textContent = "Computer Wins Round";
+            }
 
     /*Player Wins*/
     } else if ( (playerSelection === "paper" && computerSelection === "rock") ||
@@ -80,8 +81,12 @@ function playRound (playerSelection, computerSelection) {
                 playerChoice.textContent = `${playerSelection.toUpperCase()}`;
                 computerChoice.textContent = `${computerSelection.toUpperCase()}`;
                 playerScore++;
-                winner.textContent = "Player Wins Round";
                 score.textContent = `Player score is ${playerScore}. Computer score is ${computerScore}.`
+                if (playerScore === 5) {
+                    winner.textContent = "Player Wins The Game!";
+                } else {
+                    winner.textContent = "Player Wins Round";
+                }
                          
     /*Tie Game*/
     } else if ( (playerSelection === "rock" && computerSelection === "rock") ||
