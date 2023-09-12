@@ -18,13 +18,22 @@ let playerChoose = ["rock", "paper", "scissors"];
 
 playerChoose.forEach(item => {
     const element = document.getElementById(item);
-    element.addEventListener("click", ()=> {
-        playerSelection = item
+
+    function playFullGame() {
+        playerSelection = item;
         computerSelection = getComputerChoice();
-        playRound(playerSelection, computerSelection)
+        if (playerScore === 5) {
+            winner.textContent = "Player Wins The Game!";
+            element.removeEventListener("click", playFullGame);
+        } else if (computerScore === 5) {
+            winner.textContent = "Computer Wins The Game!";
+            element.removeEventListener("click", playFullGame);
+        } else {
+            playRound(playerSelection, computerSelection);
+        }
+    }
+    element.addEventListener("click", playFullGame);
     })
-    
-})
 
 
 const playerChoice = document.getElementById("player")
@@ -61,15 +70,9 @@ function playRound (playerSelection, computerSelection) {
             playerChoice.textContent = `${playerSelection.toUpperCase()}`;
             computerChoice.textContent = `${computerSelection.toUpperCase()}`;
             computerScore++;
-            if (computerScore === 3) {
-                winner.textContent = "Computer Wins The Game!";
-                return;
-            } else {
-                winner.textContent = "Computer Wins Round";
-                score.textContent = `Player score is ${playerScore}. Computer score is ${computerScore}.`
-            }
-            
-            
+            winner.textContent = "Computer Wins Round";
+            score.textContent = `Player score is ${playerScore}. Computer score is ${computerScore}.`
+
     /*Player Wins*/
     } else if ( (playerSelection === "paper" && computerSelection === "rock") ||
             (playerSelection === "scissors" && computerSelection === "paper") ||
@@ -77,12 +80,8 @@ function playRound (playerSelection, computerSelection) {
                 playerChoice.textContent = `${playerSelection.toUpperCase()}`;
                 computerChoice.textContent = `${computerSelection.toUpperCase()}`;
                 playerScore++;
-                if (playerScore === 0) {
-                    winner.textContent = "Player Wins The Game!";
-                } else {
-                    winner.textContent = "Player Wins Round";
-                    score.textContent = `Player score is ${playerScore}. Computer score is ${computerScore}.`
-                }
+                winner.textContent = "Player Wins Round";
+                score.textContent = `Player score is ${playerScore}. Computer score is ${computerScore}.`
                          
     /*Tie Game*/
     } else if ( (playerSelection === "rock" && computerSelection === "rock") ||
