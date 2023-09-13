@@ -1,5 +1,9 @@
-//Obtains the choice of the computer
-//Need to have the game only go up to 3 wins.  Then after that, create a button to restart the game
+
+/*Putting choices in an array, and then using choices[indexof] to get the choices using math.
+Math.random() gets me a number from 0 to 1. Multiplied by 3 will get me decimal numbers up to 3.
+Math.floor() rounds the numbers down.
+Whether I use an arrow function or doing it traditionally, it ultimately does not matter.
+*/
 const getComputerChoice = () => {
     const choices = ["rock", "paper", "scissors"];
     return choices[Math.floor(Math.random() * 3)];
@@ -68,7 +72,9 @@ function setupEventListeners() {
 setupEventListeners();
 
 const restartButton = document.getElementById("restart");
-restartButton.addEventListener("click", () => {
+restartButton.addEventListener("click", resetGame);
+
+function resetGame() {
     playerScore = 0;
     computerScore = 0;
     playerSelection = "";
@@ -81,7 +87,7 @@ restartButton.addEventListener("click", () => {
     paper.disabled = false;
     scissors.disabled = false;
     gameEnded = false;  
-})
+}
 
 
 
