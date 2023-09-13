@@ -1,43 +1,71 @@
 //Obtains the choice of the computer
-function getComputerChoice() {
-    const computerChoice = Math.floor(Math.random() * 3) /*computerChoice will be 0, 1, or 2*/
-
-    if (computerChoice === 0) {
-        return "rock"
-    } else if (computerChoice === 1) {
-        return "paper"
-    } else {
-        return "scissors"
-    }
+//Need to have the game only go up to 3 wins.  Then after that, create a button to restart the game
+const getComputerChoice = () => {
+    const choices = ["rock", "paper", "scissors"];
+    return choices[Math.floor(Math.random() * 3)];
 }
 
 let computerSelection = getComputerChoice();
 let playerSelection = "";
 let computerScore = 0;
 let playerScore = 0;
-let playerChoose = ["rock", "paper", "scissors"];
+const maxWins = 3;
+let gameEnded = false;
+const playerChoice = document.getElementById("player")
+const computerChoice = document.getElementById("computer");
+const winner = document.getElementById("winner");
+const score = document.getElementById("score");
+playerChoice.textContent = "Player";
+computerChoice.textContent = "Computer";
+winner.textContent = "Winner";
 
-const rock = document.getElementById("rock");
-const paper = document.getElementById("paper");
-const scissors = document.getElementById("scissors");
 
-rock.addEventListener("click", () => {
-    playerSelection = "rock";
-    computerSelection = getComputerChoice();
-    playRound(playerSelection, computerSelection);
-});
 
-paper.addEventListener("click", () => {
-    playerSelection = "paper";
-    computerSelection = getComputerChoice();
-    playRound(playerSelection, computerSelection);
-});
+function setupEventListeners() {
+    const rock = document.getElementById("rock");
+    const paper = document.getElementById("paper");
+    const scissors = document.getElementById("scissors");
 
-scissors.addEventListener("click", () => {
-    playerSelection = "scissors";
-    computerSelection = getComputerChoice();
-    playRound(playerSelection, computerSelection);
-});
+    function checkGameEnd() {
+        if (playerScore === maxWins || computerScore === maxWins) {
+            gameEnded = true;
+            rock.disabled = true;
+            paper.disabled = true;
+            scissors.disabled = true;
+        }
+    }
+
+    rock.addEventListener("click", () => {
+        if (!gameEnded) {
+            playerSelection = "rock";
+            computerSelection = getComputerChoice();
+            playRound(playerSelection, computerSelection);
+            checkGameEnd();
+            console.log("I've been clicked")
+        }
+    });
+
+    paper.addEventListener("click", () => {
+        if (!gameEnded) {
+            playerSelection = "paper";
+            computerSelection = getComputerChoice();
+            playRound(playerSelection, computerSelection); 
+            checkGameEnd();
+        }
+        
+    });
+
+    scissors.addEventListener("click", () => {
+        if(!gameEnded) {
+            playerSelection = "scissors";
+            computerSelection = getComputerChoice();
+            playRound(playerSelection, computerSelection);
+            checkGameEnd();
+        }
+    });
+}
+
+setupEventListeners();
 
 const restartButton = document.getElementById("restart");
 restartButton.addEventListener("click", () => {
@@ -45,20 +73,19 @@ restartButton.addEventListener("click", () => {
     computerScore = 0;
     playerSelection = "";
     computerSelection = "";
+    playerChoice.textContent = "Player";
+    computerChoice.textContent = "Computer";
     winner.textContent = "Winner";
     score.textContent = "Score";
+    rock.disabled = false;
+    paper.disabled = false;
+    scissors.disabled = false;
+    gameEnded = false;  
 })
 
 
 
-const playerChoice = document.getElementById("player")
-const computerChoice = document.getElementById("computer");
-const winner = document.getElementById("winner");
-const score = document.getElementById("score");
 
-playerChoice.textContent = "Player";
-computerChoice.textContent = "Computer";
-winner.textContent = "Winner";
 
 /*Create a function that plays one Round of Rock, Paper, Scissors*/
 function playRound (playerSelection, computerSelection) {
