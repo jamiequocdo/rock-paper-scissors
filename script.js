@@ -22,16 +22,17 @@ function Game() {
         const element = document.getElementById(item);
 
         function playFullGame() {
-    playerSelection = item;
-    computerSelection = getComputerChoice();
-    if (playerScore === 5 ||computerScore === 5) {
-        element.removeEventListener("click", playFullGame);
-    } else {
-        playRound(playerSelection, computerSelection);
-    }
-}
-    element.addEventListener("click", playFullGame);
-        })
+            playerSelection = item;
+            computerSelection = getComputerChoice();
+            if (playerScore === 3 ||computerScore === 3) {
+                element.removeEventListener("click", playFullGame);
+            } else {
+                playRound(playerSelection, computerSelection);
+            }
+        }
+
+        element.addEventListener("click", playFullGame);
+            })
 }
 
 Game()
@@ -40,9 +41,10 @@ const restartButton = document.getElementById("restart");
 restartButton.addEventListener("click", () => {
     playerScore = 0;
     computerScore = 0;
-    winner.textContent = "Winner"
-    score.textContent = "Score"
-    Game();
+    playerSelection = "";
+    computerSelection = "";
+    winner.textContent = "Winner";
+    score.textContent = "Score";
 })
 
 
@@ -68,7 +70,7 @@ function playRound (playerSelection, computerSelection) {
             computerChoice.textContent = `${computerSelection.toUpperCase()}`;
             computerScore++;
             score.textContent = `Player score is ${playerScore}. Computer score is ${computerScore}.`
-            if (computerScore === 5) {
+            if (computerScore === 3) {
                 winner.textContent = "Computer Wins The Game!";
             } else {
                 winner.textContent = "Computer Wins Round";
@@ -82,7 +84,7 @@ function playRound (playerSelection, computerSelection) {
                 computerChoice.textContent = `${computerSelection.toUpperCase()}`;
                 playerScore++;
                 score.textContent = `Player score is ${playerScore}. Computer score is ${computerScore}.`
-                if (playerScore === 5) {
+                if (playerScore === 3) {
                     winner.textContent = "Player Wins The Game!";
                 } else {
                     winner.textContent = "Player Wins Round";
