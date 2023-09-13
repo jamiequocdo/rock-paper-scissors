@@ -23,51 +23,41 @@ playerChoice.textContent = "Player";
 computerChoice.textContent = "Computer";
 winner.textContent = "Winner";
 
+function disableButtons() {
+    document.querySelectorAll(".choice-button").forEach(button => {
+        button.disabled = true;
+    })
+}
+
+function enableButtons() {
+    document.querySelectorAll(".choice-button").forEach(button => {
+        button.disabled = false;
+    })
+}
+
 
 
 function setupEventListeners() {
-    const rock = document.getElementById("rock");
-    const paper = document.getElementById("paper");
-    const scissors = document.getElementById("scissors");
+    const buttons = document.querySelectorAll(".choice-button")
 
     function checkGameEnd() {
         if (playerScore === maxWins || computerScore === maxWins) {
             gameEnded = true;
-            rock.disabled = true;
-            paper.disabled = true;
-            scissors.disabled = true;
+            disableButtons()
         }
     }
 
-    rock.addEventListener("click", () => {
-        if (!gameEnded) {
-            playerSelection = "rock";
-            computerSelection = getComputerChoice();
-            playRound(playerSelection, computerSelection);
-            checkGameEnd();
-            console.log("I've been clicked")
-        }
-    });
-
-    paper.addEventListener("click", () => {
-        if (!gameEnded) {
-            playerSelection = "paper";
-            computerSelection = getComputerChoice();
-            playRound(playerSelection, computerSelection); 
-            checkGameEnd();
-        }
-        
-    });
-
-    scissors.addEventListener("click", () => {
-        if(!gameEnded) {
-            playerSelection = "scissors";
-            computerSelection = getComputerChoice();
-            playRound(playerSelection, computerSelection);
-            checkGameEnd();
-        }
-    });
-}
+    buttons.forEach(button => {
+        button.addEventListener("click", () => {
+            if (!gameEnded) {
+                playerSelection = button.dataset.choice;
+                computerSelection = getComputerChoice();
+                playRound(playerSelection, computerSelection);
+                checkGameEnd();
+            }
+        });
+        })
+    }
 
 setupEventListeners();
 
@@ -83,9 +73,7 @@ function resetGame() {
     computerChoice.textContent = "Computer";
     winner.textContent = "Winner";
     score.textContent = "Score";
-    rock.disabled = false;
-    paper.disabled = false;
-    scissors.disabled = false;
+    enableButtons();
     gameEnded = false;  
 }
 
@@ -95,44 +83,28 @@ function resetGame() {
 
 /*Create a function that plays one Round of Rock, Paper, Scissors*/
 function playRound (playerSelection, computerSelection) {
+    const playerChoiceText = playerSelection.toUpperCase();
+    const computerChoiceText = computerSelection.toUpperCase();
 
     /*Computer Wins*/
-    
-    if ((playerSelection === "rock" && computerSelection === "paper") ||
-        (playerSelection === "paper" && computerSelection === "scissors") ||
-        (playerSelection === "scissors" && computerSelection === "rock")) {
-            playerChoice.textContent = `${playerSelection.toUpperCase()}`;
-            computerChoice.textContent = `${computerSelection.toUpperCase()}`;
-            computerScore++;
-            score.textContent = `Player score is ${playerScore}. Computer score is ${computerScore}.`
-            if (computerScore === 3) {
-                winner.textContent = "Computer Wins The Game!";
-            } else {
-                winner.textContent = "Computer Wins Round";
-            }
+
+    if (playerSelection === computerSelection) {
+        winner.textContent = "Tie Round"
+    } else if( 
+        (playerSelection === "paper" && computerSelection === "rock") ||
+        (playerSelection === "scissors" && computerSelection === "paper") ||
+        (playerSelection === "rock" && computerSelection === "scissors")) {
+            playerScore++;
+            winner.textContent = playerScore === maxWins ? "Player Wins The Game" : "Player Wins Round";
 
     /*Player Wins*/
-    } else if ( (playerSelection === "paper" && computerSelection === "rock") ||
-            (playerSelection === "scissors" && computerSelection === "paper") ||
-            (playerSelection === "rock" && computerSelection === "scissors")) {
-                playerChoice.textContent = `${playerSelection.toUpperCase()}`;
-                computerChoice.textContent = `${computerSelection.toUpperCase()}`;
-                playerScore++;
-                score.textContent = `Player score is ${playerScore}. Computer score is ${computerScore}.`
-                if (playerScore === 3) {
-                    winner.textContent = "Player Wins The Game!";
-                } else {
-                    winner.textContent = "Player Wins Round";
-                }
-                         
-    /*Tie Game*/
-    } else if ( (playerSelection === "rock" && computerSelection === "rock") ||
-                (playerSelection === "paper" && computerSelection === "paper") ||
-                (playerSelection === "scissors" && computerSelection === "scissors")) {
-                    playerChoice.textContent = `${playerSelection.toUpperCase()}`;
-                    computerChoice.textContent = `${computerSelection.toUpperCase()}`;
-                    winner.textContent = `Tie Game, both chose ${playerSelection}`;
-                    score.textContent = `Player score is ${playerScore}. Computer score is ${computerScore}.`
+    } else {
+        computerScore++;
+        winner.textContent = computerScore === maxWins ? "Computer Wins The Game" : "Computer Wins Round"
     }
-}
 
+    playerChoice.textContent = playerChoiceText;
+    computerChoice.textContent = computerChoiceText;
+    score.textContent = `Player Score: ${playerScore}. Computer Score: ${computerScore}`;
+
+}
